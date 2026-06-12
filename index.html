@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚽ 石头和多多的足球世界杯小课堂 🏆</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a5f2a 0%, #0d3b1a 50%, #1a5f2a 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 顶部装饰 */
+        .header-deco {
+            text-align: center;
+            font-size: 3rem;
+            padding: 20px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* 标题卡片 */
+        .title-card {
+            background: linear-gradient(145deg, #ffd700, #ffaa00);
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .title-card::before {
+            content: '⚽';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.15;
+            top: -20px;
+            left: -20px;
+            animation: rotate 10s linear infinite;
+        }
+        
+        .title-card::after {
+            content: '🏆';
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.15;
+            bottom: -10px;
+            right: -10px;
+            animation: rotate 15s linear infinite reverse;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .title-card h1 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 2.5rem;
+            color: #1a5f2a;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+        }
+        
+        .title-card .subtitle {
+            font-size: 1.1rem;
+            color: #8B4513;
+            font-weight: bold;
+        }
+        
+        /* 章节卡片 */
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px dashed rgba(255, 215, 0, 0.5);
+        }
+        
+        .section-icon {
+            font-size: 2.5rem;
+            animation: wiggle 2s ease-in-out infinite;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        .section h2 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 1.8rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .section h3 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 1.4rem;
+            color: #ffaa00;
+            margin: 20px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* 内容样式 */
+        .content-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffaa00 100%);
+            color: #1a5f2a;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .emoji-text {
+            font-size: 1.1rem;
+        }
+        
+        .emoji-text span {
+            font-size: 1.3rem;
+            margin-right: 5px;
+        }
+        
+        /* 表格样式 */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(145deg, #ffd700, #ffaa00);
+            color: #1a5f2a;
+            padding: 15px 10px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        td {
+            padding: 12px 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        tr:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* 列表样式 */
+        .fun-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .fun-list li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: rgba(255, 215, 0, 0.15);
+            border-radius: 12px;
+            border-left: 4px solid #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .fun-list li::before {
+            content: '✨';
+            font-size: 1.2rem;
+        }
+        
+        /* 规则框 */
+        .rule-box {
+            background: linear-gradient(145deg, rgba(255, 0, 0, 0.2), rgba(255, 100, 0, 0.2));
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .rule-box.green {
+            background: linear-gradient(145deg, rgba(0, 255, 0, 0.15), rgba(0, 200, 0, 0.15));
+            border-color: #51cf66;
+        }
+        
+        .rule-box.red {
+            background: linear-gradient(145deg, rgba(255, 0, 0, 0.15), rgba(200, 0, 0, 0.15));
+            border-color: #ff6b6b;
+        }
+        
+        /* 奖励展示 */
+        .reward-card {
+            background: linear-gradient(145deg, #ffd700, #ffaa00);
+            color: #1a5f2a;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+        
+        .reward-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .reward-number {
+            font-size: 3rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+        
+        /* 任务卡片 */
+        .task-card {
+            background: linear-gradient(145deg, rgba(100, 200, 255, 0.2), rgba(50, 150, 255, 0.2));
+            border: 2px solid #74c0fc;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .task-card .task-emoji {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: bounce 1.5s infinite;
+        }
+        
+        .task-card h4 {
+            color: #74c0fc;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        /* 底部 */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer .big-emoji {
+            font-size: 4rem;
+            display: block;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        /* 浮动装饰 */
+        .floating {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.3;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating:nth-child(2) { top: 30%; right: 5%; animation-delay: 2s; }
+        .floating:nth-child(3) { top: 60%; left: 3%; animation-delay: 4s; }
+        .floating:nth-child(4) { top: 80%; right: 8%; animation-delay: 1s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        /* 打印样式 */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .section {
+                background: #f5f5f5;
+                border-color: #ddd;
+                page-break-inside: avoid;
+            }
+            .title-card {
+                background: linear-gradient(145deg, #ffd700, #ffaa00);
+            }
+        }
+        
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .title-card {
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            .title-card h1 {
+                font-size: 1.6rem;
+            }
+            .title-card .subtitle {
+                font-size: 0.95rem;
+            }
+            .section {
+                padding: 15px;
+                border-radius: 20px;
+            }
+            .section-header {
+                gap: 10px;
+                padding-bottom: 10px;
+            }
+            .section-icon {
+                font-size: 2rem;
+            }
+            .section h2 {
+                font-size: 1.3rem;
+            }
+            .section h3 {
+                font-size: 1.15rem;
+            }
+            .content-box {
+                padding: 15px;
+            }
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.85rem;
+            }
+            .reward-card {
+                padding: 20px 15px;
+            }
+            .reward-number {
+                font-size: 2rem;
+            }
+            .task-card {
+                padding: 20px 15px;
+            }
+            .header-deco {
+                font-size: 2rem;
+                padding: 10px 0;
+            }
+            .footer .big-emoji {
+                font-size: 3rem;
+            }
+            .floating {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮动装饰 -->
+    <div class="floating">⚽</div>
+    <div class="floating">🏆</div>
+    <div class="floating">⭐</div>
+    <div class="floating">🎯</div>
+    
+    <div class="container">
+        <!-- 标题 -->
+        <div class="header-deco">⚽ 🏆 ⚽</div>
+        
+        <div class="title-card">
+            <h1>石头和多多的<br>足球世界杯小课堂</h1>
+            <p class="subtitle">写给 8 岁的石头和 6 岁的多多 —— 2026 年世界杯，我们一起看！🎉</p>
+        </div>
+        
+        <!-- 一、足球是什么 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">⚽</span>
+                <h2>一、足球是什么？</h2>
+            </div>
+            
+            <div class="content-box emoji-text">
+                <p><span>🦶</span>足球，就是用<strong class="highlight">脚踢的球</strong>！（不能用手哦，除了守门员 <span>🧤</span>）</p>
+                <br>
+                <p><span>👥</span>一场比赛有两支队伍，每队 <strong class="highlight">11 个人</strong>，在大大绿绿的草地上跑来跑去～</p>
+                <br>
+                <p><span>🎯</span>目标只有一个 —— <strong class="highlight">把球踢进对方的球门</strong>！</p>
+                <br>
+                <p><span>🔢</span>踢进去 1 个球，就得 1 分。比赛结束后，谁得分多，谁就赢！<span>🏆</span></p>
+            </div>
+        </div>
+        
+        <!-- 二、世界杯是什么 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🏆</span>
+                <h2>二、世界杯是什么？</h2>
+            </div>
+            
+            <div class="content-box">
+                <p class="emoji-text" style="font-size: 1.2rem; text-align: center; margin-bottom: 20px;">
+                    <span>🌍</span> 世界杯是 <strong class="highlight">全世界最厉害、最热闹的足球比赛</strong>！ <span>🎊</span>
+                </p>
+                
+                <ul class="fun-list">
+                    <li>每 <strong class="highlight">4 年</strong> 举办一次 <span>📅</span></li>
+                    <li>全世界各个国家的队伍要先"考试"（预选赛）<span>📝</span></li>
+                    <li>最后只有 <strong class="highlight">48 支</strong> 队伍能进入决赛圈 <span>✨</span></li>
+                    <li>大家为了争夺一座金灿灿的大力神杯，拼得可凶了！<span>💪</span></li>
+                </ul>
+                
+                <div style="background: rgba(255,215,0,0.2); border-radius: 15px; padding: 20px; margin-top: 20px; text-align: center;">
+                    <p style="font-size: 1.2rem;"><span>🌎🌍🌏</span></p>
+                    <p><strong>2026 年的世界杯</strong>在<strong class="highlight">美国、加拿大、墨西哥</strong>三个国家一起举办！</p>
+                    <p style="margin-top: 10px;">这是<span style="font-size: 1.3rem;">🎉</span> <strong>第一次由三个国家合办</strong> <span style="font-size: 1.3rem;">🎉</span> 的世界杯哦！</p>
+                </div>
+            </div>
+            
+            <h3><span>🗳️</span> 世界杯举办地是怎么决定的？</h3>
+            
+            <div class="content-box">
+                <p class="emoji-text">世界杯举办地不是随便定的，要经过一个"竞选"过程：</p>
+                <br>
+                <ul class="fun-list">
+                    <li><strong>谁来决定？</strong> —— 国际足联（FIFA），足球世界的"最高领导" <span>👔</span></li>
+                    <li><strong>怎么申请？</strong> —— 想举办的国家先组队，向 FIFA 提交申请 <span>📋</span></li>
+                    <li><strong>谁投票？</strong> —— FIFA 的会员国代表们投票，得票最多的获胜！<span>🗳️</span></li>
+                    <li><strong>轮换规则</strong> —— 各大洲轮流"坐庄" <span>🔄</span></li>
+                </ul>
+                
+                <div style="background: rgba(0,200,255,0.15); border-radius: 15px; padding: 20px; margin-top: 20px;">
+                    <p style="color: #74c0fc; font-weight: bold; margin-bottom: 10px;"><span>💡</span> 小知识</p>
+                    <p>2030 年世界杯是世界杯诞生 <strong class="highlight">100 周年</strong>！乌拉圭、阿根廷、巴拉圭还会举办揭幕战，纪念第一届世界杯！<span>🎂</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 三、世界强队 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🦸</span>
+                <h2>三、世界杯上的"超级英雄队"</h2>
+            </div>
+            
+            <h3><span>🏆</span> 谁拿过世界杯冠军？</h3>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>国家</th>
+                        <th>夺冠次数</th>
+                        <th>特点</th>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🇧🇷</span> 巴西</td>
+                        <td><strong style="color: #ffd700;">5 次</strong></td>
+                        <td>全世界最多！桑巴足球，踢得像跳舞一样好看 <span>💃</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🇩🇪</span> 德国</td>
+                        <td><strong style="color: #ffd700;">4 次</strong></td>
+                        <td>像机器人一样严谨，永远不好惹 <span>🤖</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🇮🇹</span> 意大利</td>
+                        <td><strong style="color: #ffd700;">4 次</strong></td>
+                        <td>防守像城墙，反击像闪电 <span>⚡</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🇦🇷</span> 阿根廷</td>
+                        <td><strong style="color: #ffd700;">3 次</strong></td>
+                        <td>梅西的国家！2022 年刚夺冠 <span>🌟</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🇫🇷</span> 法国</td>
+                        <td><strong style="color: #ffd700;">2 次</strong></td>
+                        <td>2018 年冠军，年轻人跑得飞快 <span>💨</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🇺🇾</span> 乌拉圭</td>
+                        <td><strong style="color: #ffd700;">2 次</strong></td>
+                        <td>第一届世界杯就是他们家办的！<span>🎂</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> 英格兰</td>
+                        <td><strong style="color: #ffd700;">1 次</strong></td>
+                        <td>1966 年夺冠，之后一直在等第二个... <span>😅</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🇪🇸</span> 西班牙</td>
+                        <td><strong style="color: #ffd700;">1 次</strong></td>
+                        <td>2010 年夺冠，传球像织布一样精密 <span>🧵</span></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3><span>🌍</span> 现在最厉害的队伍</h3>
+            
+            <div class="content-box">
+                <ul class="fun-list">
+                    <li><span style="font-size: 1.3rem;">🇦🇷</span> <strong>阿根廷</strong> —— 2022 年世界杯冠军，梅西虽然老了但队伍很强 <span>👑</span></li>
+                    <li><span style="font-size: 1.3rem;">🇫🇷</span> <strong>法国</strong> —— 姆巴佩的速度像闪电，年轻又有实力 <span>⚡</span></li>
+                    <li><span style="font-size: 1.3rem;">🇪🇸</span> <strong>西班牙</strong> —— 传球控场大师，踢法很优雅 <span>🎨</span></li>
+                    <li><span style="font-size: 1.3rem;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> <strong>英格兰</strong> —— 每次都说"这次一定行" <span>😄</span></li>
+                    <li><span style="font-size: 1.3rem;">🇧🇷</span> <strong>巴西</strong> —— 永远的热门，永远的天才球员 <span>🔥</span></li>
+                    <li><span style="font-size: 1.3rem;">🇩🇪</span> <strong>德国</strong> —— 虽然近几年有点低迷，但谁也不敢小看 <span>💪</span></li>
+                    <li><span style="font-size: 1.3rem;">🇵🇹</span> <strong>葡萄牙</strong> —— C 罗的国家！<span>🌟</span></li>
+                </ul>
+            </div>
+            
+            <h3><span>🌏</span> 亚洲最厉害的是谁？</h3>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>排名</th>
+                        <th>国家</th>
+                        <th>特点</th>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🥇</span></td>
+                        <td><span style="font-size: 1.3rem;">🇯🇵</span> 日本</td>
+                        <td>亚洲老大！2022 年赢了德国和西班牙 <span>😲</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🥈</span></td>
+                        <td><span style="font-size: 1.3rem;">🇰🇷</span> 韩国</td>
+                        <td>孙兴慜是亚洲一哥，速度超快 <span>💨</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.5rem;">🥉</span></td>
+                        <td><span style="font-size: 1.3rem;">🇮🇷</span> 伊朗</td>
+                        <td>身体强壮，打法硬朗 <span>💪</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span style="font-size: 1.3rem;">🇦🇺</span> 澳大利亚</td>
+                        <td>虽然在大洋洲，但踢亚洲区预选赛 <span>🦘</span></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span style="font-size: 1.3rem;">🇶🇦</span> 卡塔尔</td>
+                        <td>2022 年世界杯东道主 <span>🏟️</span></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3><span>🇨🇳</span> 中国队什么水平？</h3>
+            
+            <div class="content-box">
+                <p class="emoji-text">说实话，中国队目前<strong>还没能进入 2026 年世界杯</strong>（预选赛还在进行中）。</p>
+                <br>
+                <ul class="fun-list">
+                    <li>中国队只进过 <strong class="highlight">1 次世界杯</strong>，是 2002 年 <span>📅</span></li>
+                    <li>那届比赛 3 场全输，进 0 球，但已经是历史最好成绩了 <span>😔</span></li>
+                    <li>现在世界排名在 80 名左右，亚洲大概第 10-13 名 <span>📊</span></li>
+                    <li>2026 年世界杯亚洲有 8.5 个名额，中国队正在努力争取！<span>💪</span></li>
+                </ul>
+                
+                <div style="background: rgba(255,0,0,0.15); border: 2px solid #ff6b6b; border-radius: 15px; padding: 15px; margin-top: 15px; text-align: center;">
+                    <p style="font-size: 1.1rem;"><span style="font-size: 1.5rem;">🇨🇳</span> <strong>为中国队加油</strong>，不管输赢，支持自己国家的球队是最重要的！<span style="font-size: 1.5rem;">❤️</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 四、球星介绍 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">⭐</span>
+                <h2>四、世界杯上有特色的球员</h2>
+            </div>
+            
+            <h3><span>👑</span> 传奇球星</h3>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>球员</th>
+                        <th>国家</th>
+                        <th>号码</th>
+                        <th>特点</th>
+                    </tr>
+                    <tr>
+                        <td><strong>梅西</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇦🇷</span> 阿根廷</td>
+                        <td><strong style="color: #ffd700;">10 号</strong></td>
+                        <td>"球王"，小个子但技术无敌 <span>🎩</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>C罗</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇵🇹</span> 葡萄牙</td>
+                        <td><strong style="color: #ffd700;">7 号</strong></td>
+                        <td>肌肉猛男，40 多岁还在踢！<span>💪</span></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3><span>⚡</span> 超级新星</h3>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>球员</th>
+                        <th>国家</th>
+                        <th>号码</th>
+                        <th>特点</th>
+                    </tr>
+                    <tr>
+                        <td><strong>姆巴佩</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇫🇷</span> 法国</td>
+                        <td><strong style="color: #ffd700;">10 号</strong></td>
+                        <td>跑得比汽车还快！<span>🏎️</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>哈兰德</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇳🇴</span> 挪威</td>
+                        <td><strong style="color: #ffd700;">9 号</strong></td>
+                        <td>身高 1 米 94，进球像吃豆子 <span>🫘</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>贝林厄姆</strong></td>
+                        <td><span style="font-size: 1.3rem;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> 英格兰</td>
+                        <td><strong style="color: #ffd700;">10 号</strong></td>
+                        <td>20 岁就当核心，全能中场 <span>🎯</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>维尼修斯</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇧🇷</span> 巴西</td>
+                        <td><strong style="color: #ffd700;">7 号</strong></td>
+                        <td>巴西新天才，过人像过马路 <span>🚶</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>亚马尔</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇪🇸</span> 西班牙</td>
+                        <td><strong style="color: #ffd700;">19 号</strong></td>
+                        <td>才 17 岁！前途无量 <span>👶</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>穆西亚拉</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇩🇪</span> 德国</td>
+                        <td><strong style="color: #ffd700;">10 号</strong></td>
+                        <td>"德国梅西"，技术细腻 <span>🎨</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>劳塔罗</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇦🇷</span> 阿根廷</td>
+                        <td><strong style="color: #ffd700;">22 号</strong></td>
+                        <td>梅西的队友，跑位鬼魅 <span>👻</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>罗德里</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇪🇸</span> 西班牙</td>
+                        <td><strong style="color: #ffd700;">16 号</strong></td>
+                        <td>2024 年金球奖得主 <span>🏆</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>福登</strong></td>
+                        <td><span style="font-size: 1.3rem;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> 英格兰</td>
+                        <td><strong style="color: #ffd700;">47 号</strong></td>
+                        <td>"曼城太子"，左右脚都能射门 <span>👑</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>巴尔韦德</strong></td>
+                        <td><span style="font-size: 1.3rem;">🇺🇾</span> 乌拉圭</td>
+                        <td><strong style="color: #ffd700;">15 号</strong></td>
+                        <td>全能战士，皇马铁三角 <span>🔱</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 五、足球规则 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h2>五、足球规则小课堂</h2>
+            </div>
+            
+            <h3><span>⏱️</span> 比赛基本设置</h3>
+            
+            <div class="content-box">
+                <ul class="fun-list">
+                    <li><span>⏰</span> 一场球赛分上下半场，各 <strong class="highlight">45 分钟</strong></li>
+                    <li><span>☕</span> 中间休息 <strong class="highlight">15 分钟</strong></li>
+                    <li><span>👥</span> 每队 <strong class="highlight">11 人</strong>上场，其中 1 人是守门员 <span>🧤</span></li>
+                    <li><span>🔄</span> 可以换 <strong class="highlight">3-5 人</strong></li>
+                    <li><span>🤝</span> 小组赛可以打平；淘汰赛打平就<strong class="highlight">点球大战</strong>！<span>🎯</span></li>
+                </ul>
+            </div>
+            
+            <h3><span>🚫</span> 什么情况下算犯规？</h3>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>犯规类型</th>
+                        <th>什么意思</th>
+                        <th>后果</th>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.3rem;">✋</span> 手球</td>
+                        <td>不是守门员，却用手碰球</td>
+                        <td>对方获得任意球 <span>⚽</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.3rem;">🤼</span> 拉人/推人</td>
+                        <td>用手拉扯或推搡对方</td>
+                        <td>黄牌或红牌 <span>🟨🟥</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.3rem;">🦶</span> 背后铲球</td>
+                        <td>从背后用脚勾倒对方</td>
+                        <td>很危险！黄牌起步 <span>⚠️</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.3rem;">🦵</span> 抬脚过高</td>
+                        <td>脚抬太高，差点踢到头</td>
+                        <td>黄牌 <span>🟨</span></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3><span>🟨🟥</span> 黄牌 vs 红牌</h3>
+            
+            <div class="content-box">
+                <div class="rule-box" style="margin-bottom: 15px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="font-size: 2rem;">🟨</span> <strong>黄牌</strong> = 警告！</p>
+                    <p>裁判说："注意点，再犯规就罚你下去！"</p>
+                    <p style="margin-top: 10px; color: #ffd700;"><strong>2 张黄牌 = 1 张红牌</strong>，直接罚下！<span>😱</span></p>
+                </div>
+                
+                <div class="rule-box red">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="font-size: 2rem;">🟥</span> <strong>红牌</strong> = 直接罚下！</p>
+                    <p>被罚下的人不能继续比赛，而且<strong>下一场也不能上</strong>！<span>😰</span></p>
+                </div>
+            </div>
+            
+            <h3><span>🦶</span> 铲球规则</h3>
+            
+            <div class="content-box">
+                <div class="rule-box green" style="margin-bottom: 15px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="font-size: 1.5rem;">✅</span> <strong>可以铲球</strong></p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li><span>👍</span> 先碰到球，再碰到人</li>
+                        <li><span>👍</span> 从侧面或正面铲</li>
+                        <li><span>👍</span> 脚没有抬得太高</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-box red">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="font-size: 1.5rem;">❌</span> <strong>不能铲球</strong></p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li><span>🚫</span> 从背后铲人（非常危险！）</li>
+                        <li><span>🚫</span> 没碰到球，直接把人铲倒</li>
+                        <li><span>🚫</span> 双脚离地飞铲</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; margin-top: 15px; font-size: 1.1rem;"><span>🥋</span> 好的铲球像武术一样帅，坏的铲球会伤人，裁判会重罚！</p>
+            </div>
+            
+            <h3><span>🥅</span> 禁区规则</h3>
+            
+            <div class="content-box">
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>区域</th>
+                            <th>规则</th>
+                        </tr>
+                        <tr>
+                            <td><strong>大禁区</strong> <span>📐</span></td>
+                            <td>守门员可以在这里用手；对方犯规可能被判<strong style="color: #ffd700;">点球</strong>！</td>
+                        </tr>
+                        <tr>
+                            <td><strong>小禁区</strong> <span>🎯</span></td>
+                            <td>守门员发门球必须从这里踢出</td>
+                        </tr>
+                        <tr>
+                            <td><strong>点球点</strong> <span>⚫</span></td>
+                            <td>离球门 11 米，点球就在这里踢</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div style="background: rgba(255,215,0,0.2); border-radius: 15px; padding: 20px; margin-top: 15px; text-align: center;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="font-size: 2rem;">🎯</span> <strong>点球 (Penalty)</strong></p>
+                    <p>只有守门员和罚球球员在禁区内</p>
+                    <p>守门员必须站在门线上，球踢出前不能动</p>
+                    <p style="margin-top: 10px; color: #ffd700;"><strong>守门员扑出点球是超级英雄行为！</strong> <span style="font-size: 1.5rem;">🧤🦸</span></p>
+                </div>
+            </div>
+            
+            <h3><span>🔄</span> 角球、任意球、界外球</h3>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>类型</th>
+                        <th>什么时候</th>
+                        <th>怎么踢</th>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.3rem;">🚩</span> <strong>角球</strong></td>
+                        <td>防守方把球踢出边线</td>
+                        <td>在角旗杆旁边踢，进攻方好机会！<span>🎉</span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.3rem;">⚽</span> <strong>任意球</strong></td>
+                        <td>一方犯规</td>
+                        <td>直接任意球可直接射门；间接要先传给队友</td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.3rem;">🙌</span> <strong>界外球</strong></td>
+                        <td>球出边线</td>
+                        <td>双手举过头顶抛出，双脚不能离地</td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size: 1.3rem;">🥅</span> <strong>球门球</strong></td>
+                        <td>进攻方把球踢出底线</td>
+                        <td>守门员从小禁区踢出</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3><span>🏃</span> 越位——最难懂的规则！</h3>
+            
+            <div class="content-box">
+                <p class="emoji-text" style="margin-bottom: 15px;">越位是很多大人都搞不明白的规则，用简单的话讲：</p>
+                
+                <div style="background: rgba(100,200,255,0.2); border-radius: 15px; padding: 20px; margin-bottom: 15px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="font-size: 1.5rem;">❓</span> <strong>什么时候算越位？</strong></p>
+                    <p>当队友传球给你的那一瞬间：</p>
+                    <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                        <li><span>1️⃣</span> 你比球更靠近对方球门</li>
+                        <li><span>2️⃣</span> 你前面只有 <strong class="highlight">1 个或 0 个</strong>对方防守球员</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-size: 1.2rem; margin: 20px 0;"><span style="font-size: 1.5rem;">💡</span> <strong>简单说</strong>：你不能偷偷摸摸跑到对方最后一名后卫前面等球！</p>
+                
+                <div style="background: rgba(0,255,0,0.15); border-radius: 15px; padding: 15px;">
+                    <p style="margin-bottom: 10px;"><span style="font-size: 1.3rem;">✅</span> <strong>不算越位的情况</strong>：</p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li><span>🟢</span> 你在自己半场（中线后面）</li>
+                        <li><span>🟢</span> 球是从对方球员身上弹过来的</li>
+                        <li><span>🟢</span> 发角球、界外球、球门球时没有越位</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; margin-top: 15px;"><span>📏</span> 画一条线，比一比"比球更靠前"是什么意思 <span>😄</span></p>
+            </div>
+        </div>
+        
+        <!-- 六、小任务 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🎨</span>
+                <h2>六、给石头和多多的小任务</h2>
+            </div>
+            
+            <div style="display: grid; gap: 15px;">
+                <div class="task-card">
+                    <div class="task-emoji">🎨</div>
+                    <h4>画一画</h4>
+                    <p>你心中的足球长什么样？<br>是圆的、花的、还是带火焰的？<span>🔥</span></p>
+                </div>
+                
+                <div class="task-card">
+                    <div class="task-emoji">📝</div>
+                    <h4>记一记</h4>
+                    <p>看比赛时，记下你<br><strong>最喜欢的球队和球员</strong><span>⭐</span></p>
+                </div>
+                
+                <div class="task-card">
+                    <div class="task-emoji">🗺️</div>
+                    <h4>找一找</h4>
+                    <p>在地图上找找<br><strong>美国、加拿大、墨西哥</strong>在哪里？<span>🌎</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 七、家庭小游戏 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🎮</span>
+                <h2>七、家庭小游戏：冠军预测大比拼</h2>
+            </div>
+            
+            <h3><span>🔍</span> 第一轮：小组赛预测——谁能进 16 强？</h3>
+            
+            <div class="content-box">
+                <p class="emoji-text" style="font-size: 1.1rem; margin-bottom: 15px;">
+                    <span style="font-size: 1.3rem;">⚽</span> <strong>小组赛开打后</strong>，石头和多多边看比赛边观察，陆续选出自己认为能打进 <strong class="highlight">16 强</strong>的 <strong class="highlight">3 支球队</strong>！
+                </p>
+                
+                <div style="background: rgba(255,215,0,0.15); border-radius: 15px; padding: 20px; margin: 15px 0;">
+                    <p style="color: #ffd700; font-weight: bold; margin-bottom: 10px;"><span style="font-size: 1.3rem;">🤔</span> 怎么选？</p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li><span>⚽</span> 看哪支球队进球多、配合好</li>
+                        <li><span>🏃</span> 看哪个球员过人帅、射门准</li>
+                        <li><span>🎉</span> 看哪支球队赢球后庆祝最开心</li>
+                        <li><span>🎨</span> 也可以单纯因为喜欢某个国家的国旗颜色！</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-box" style="margin: 15px 0;">
+                    <p style="color: #ffd700; font-weight: bold; margin-bottom: 10px;"><span style="font-size: 1.3rem;">📋</span> 重要规则</p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li><span>🔄</span> 小组赛期间<strong>可以无限次修改</strong>自己的选择</li>
+                        <li><span>🔒</span> <strong>32 强名单产生前</strong>，必须最终确定 3 支球队</li>
+                        <li><span>👨‍👩‍👧‍👦</span> 爸爸妈妈也可以一起参与，规则相同</li>
+                    </ul>
+                </div>
+                
+                <div class="reward-card">
+                    <h4><span style="font-size: 2rem;">🎁</span> 奖励</h4>
+                    <p>如果选的球队真的进了 16 强</p>
+                    <p class="reward-number">每进 1 支 = 2 个大奖励贴</p>
+                    <p style="margin-top: 10px;"><span style="font-size: 1.5rem;">⭐⭐</span></p>
+                </div>
+            </div>
+            
+            <h3><span>🏅</span> 第二轮：淘汰赛预测——谁能夺冠？</h3>
+            
+            <div class="content-box">
+                <p class="emoji-text" style="margin-bottom: 15px;">
+                    <span style="font-size: 1.3rem;">🎯</span> 等 <strong class="highlight">16 强名单出来后</strong>，大家重新各选 <strong class="highlight">3 支</strong>球队，预测谁能走到最后！
+                </p>
+                
+                <div style="background: rgba(255,215,0,0.15); border-radius: 15px; padding: 20px; margin: 15px 0;">
+                    <p style="color: #ffd700; font-weight: bold; margin-bottom: 15px; text-align: center;"><span style="font-size: 1.5rem;">🏆</span> 奖励（可以重复获得！）</p>
+                    
+                    <div style="display: grid; gap: 10px;">
+                        <div style="background: linear-gradient(145deg, #ffd700, #ffaa00); color: #1a5f2a; border-radius: 12px; padding: 15px; text-align: center;">
+                            <p style="font-size: 1.3rem; font-weight: bold;"><span style="font-size: 1.5rem;">🥇</span> 获得冠军</p>
+                            <p style="font-size: 2rem; font-weight: 900;">10 个大奖励贴</p>
+                        </div>
+                        <div style="background: linear-gradient(145deg, #c0c0c0, #a0a0a0); color: #1a5f2a; border-radius: 12px; padding: 15px; text-align: center;">
+                            <p style="font-size: 1.3rem; font-weight: bold;"><span style="font-size: 1.5rem;">🥈</span> 获得亚军</p>
+                            <p style="font-size: 2rem; font-weight: 900;">7 个大奖励贴</p>
+                        </div>
+                        <div style="background: linear-gradient(145deg, #cd7f32, #b87333); color: #fff; border-radius: 12px; padding: 15px; text-align: center;">
+                            <p style="font-size: 1.3rem; font-weight: bold;"><span style="font-size: 1.5rem;">🥉</span> 获得季军</p>
+                            <p style="font-size: 2rem; font-weight: 900;">5 个大奖励贴</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(0,255,0,0.15); border: 2px solid #51cf66; border-radius: 15px; padding: 20px; margin-top: 15px; text-align: center;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="font-size: 1.5rem;">✨</span> <strong>可以重复获得！</strong></p>
+                    <p>3 支球队中 1 个冠军 + 1 个季军 =</p>
+                    <p style="font-size: 1.5rem; color: #ffd700; font-weight: bold; margin: 10px 0;"><span style="font-size: 2rem;">🌟</span> 10 + 5 = <strong>15 个大奖励贴</strong>！<span style="font-size: 2rem;">🌟</span></p>
+                </div>
+            </div>
+            
+            <h3><span>📋</span> 记录表</h3>
+            
+            <div class="content-box">
+                <p style="color: #ffd700; font-weight: bold; margin-bottom: 15px;"><span style="font-size: 1.3rem;">📝</span> 第一轮：16 强预测</p>
+                
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>家庭成员</th>
+                            <th>第一选择</th>
+                            <th>第二选择</th>
+                            <th>第三选择</th>
+                            <th>进了几支</th>
+                            <th>奖励贴</th>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 1.3rem;">👦</span> 石头</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 1.3rem;">👦</span> 多多</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 1.3rem;">👨</span> 爸爸</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 1.3rem;">👩</span> 妈妈</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <p style="color: #ffd700; font-weight: bold; margin: 20px 0 15px;"><span style="font-size: 1.3rem;">🏆</span> 第二轮：冠军预测</p>
+                
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>家庭成员</th>
+                            <th>第一选择</th>
+                            <th>第二选择</th>
+                            <th>第三选择</th>
+                            <th>冠军</th>
+                            <th>亚军</th>
+                            <th>季军</th>
+                            <th>奖励贴</th>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 1.3rem;">👦</span> 石头</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 1.3rem;">👦</span> 多多</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 1.3rem;">👨</span> 爸爸</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><span style="font-size: 1.3rem;">👩</span> 妈妈</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; padding: 20px; background: rgba(255,215,0,0.2); border-radius: 20px;">
+                <p style="font-size: 1.3rem;"><span style="font-size: 2rem;">👀</span></p>
+                <p style="font-size: 1.2rem;">石头、多多，看球的时候睁大眼睛，</p>
+                <p style="font-size: 1.2rem;">边玩边选，找出你们心中的<strong style="color: #ffd700;">"超级英雄队"</strong>吧！<span style="font-size: 1.5rem;">😄</span></p>
+            </div>
+        </div>
+        
+        <!-- 底部 -->
+        <div class="footer">
+            <span class="big-emoji">⚽ 🏆 ⚽</span>
+            <p style="font-size: 1.3rem; margin-bottom: 15px;">足球不只是输赢，更是</p>
+            <p style="font-size: 1.5rem; color: #ffd700; font-weight: bold; margin-bottom: 15px;">
+                <span>🤝</span> teamwork <span>💪</span> 坚持 <span>❤️</span> 友谊
+            </p>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">2026 年世界杯，我们一家人一起看，一起欢呼！</p>
+            <p style="font-size: 1.5rem; font-weight: bold;">石头、多多，准备好了吗？<span style="font-size: 2rem;">⚽🔥</span></p>
+            <p style="margin-top: 30px; color: rgba(255,255,255,0.6);">写于 2026 年世界杯前夕</p>
+        </div>
+    </div>
+</body>
+</html>
