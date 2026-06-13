@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 16强竞猜 - 石头和多多 ⚽</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a5f2a 0%, #0d3b1a 50%, #1a5f2a 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.8;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .nav-bar a {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            color: #ffd700;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .nav-bar a:hover {
+            background: rgba(255, 215, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .title-card {
+            background: linear-gradient(145deg, #ffd700, #ffaa00);
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .title-card h1 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 2.2rem;
+            color: #1a5f2a;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+        }
+
+        .title-card .subtitle {
+            font-size: 1.1rem;
+            color: #8B4513;
+            font-weight: bold;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px dashed rgba(255, 215, 0, 0.5);
+        }
+
+        .section h2 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 1.6rem;
+            color: #ffd700;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .coming-soon .big-emoji {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .coming-soon h3 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 1.8rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffaa00 100%);
+            color: #1a5f2a;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .bracket-placeholder {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .match-slot {
+            background: rgba(0, 0, 0, 0.2);
+            border: 2px dashed rgba(255, 215, 0, 0.4);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .match-slot h4 {
+            color: #ffd700;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .match-slot .team {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 8px;
+            margin: 5px 0;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .rules-box {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #51cf66;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .rules-box h3 {
+            color: #51cf66;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .rules-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rules-box li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 10px; }
+            .title-card h1 { font-size: 1.5rem; }
+            .section { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <a href="足球世界杯入门_石头和多多.html">🏠 首页</a>
+            <a href="groups.html">⚽ 参赛队伍</a>
+            <a href="knockout16.html">🏆 16强</a>
+        </div>
+
+        <div class="title-card">
+            <h1>16 强比赛竞猜</h1>
+            <p class="subtitle">小组赛结束后，这里会列出真正的 16 强对阵表！</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span style="font-size: 2.5rem;">⏳</span>
+                <h2>耐心等待一下</h2>
+            </div>
+
+            <div class="coming-soon">
+                <span class="big-emoji">⚽🏆⚽</span>
+                <h3>16 强还没产生呢！</h3>
+                <p>小组赛正在进行中，等所有比赛踢完，</p>
+                <p>爸爸会在这里更新真正的 <span class="highlight">16 强对阵表</span>。</p>
+                <p>到时候，石头和多多可以每人再选 <span class="highlight">3 支</span> 自己认为能夺冠的队伍！</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <span style="font-size: 2.5rem;">🗓️</span>
+                <h2>16 强占位对阵表</h2>
+            </div>
+
+            <p style="margin-bottom: 15px;">下面会先放好 8 场 16 强比赛的"空座位"，等队伍确定后，把它们的名字填进去：</p>
+
+            <div class="bracket-placeholder">
+                <div class="match-slot">
+                    <h4>1/8 决赛 1</h4>
+                    <div class="team">待定 A</div>
+                    <div class="team">待定 B</div>
+                </div>
+                <div class="match-slot">
+                    <h4>1/8 决赛 2</h4>
+                    <div class="team">待定 C</div>
+                    <div class="team">待定 D</div>
+                </div>
+                <div class="match-slot">
+                    <h4>1/8 决赛 3</h4>
+                    <div class="team">待定 E</div>
+                    <div class="team">待定 F</div>
+                </div>
+                <div class="match-slot">
+                    <h4>1/8 决赛 4</h4>
+                    <div class="team">待定 G</div>
+                    <div class="team">待定 H</div>
+                </div>
+                <div class="match-slot">
+                    <h4>1/8 决赛 5</h4>
+                    <div class="team">待定 I</div>
+                    <div class="team">待定 J</div>
+                </div>
+                <div class="match-slot">
+                    <h4>1/8 决赛 6</h4>
+                    <div class="team">待定 K</div>
+                    <div class="team">待定 L</div>
+                </div>
+                <div class="match-slot">
+                    <h4>1/8 决赛 7</h4>
+                    <div class="team">待定 M</div>
+                    <div class="team">待定 N</div>
+                </div>
+                <div class="match-slot">
+                    <h4>1/8 决赛 8</h4>
+                    <div class="team">待定 O</div>
+                    <div class="team">待定 P</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="rules-box">
+                <h3><span style="font-size: 1.5rem;">📝</span> 16 强竞猜规则（先准备好）</h3>
+                <ul>
+                    <li><span>⚽</span> 16 强名单确定后，石头和多多各选 <strong style="color: #ffd700;">3 支</strong> 球队</li>
+                    <li><span>🏆</span> 冠军猜中 = 10 个大奖励贴</li>
+                    <li><span>🥈</span> 亚军猜中 = 7 个大奖励贴</li>
+                    <li><span>🥉</span> 季军猜中 = 5 个大奖励贴</li>
+                    <li><span>✨</span> 可以多支队伍同时获奖，奖励贴可以叠加！</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p style="font-size: 1.5rem; color: #ffd700; font-weight: bold;">先好好看小组赛，16 强见！ ⚽🔥</p>
+        </div>
+    </div>
+</body>
+</html>
