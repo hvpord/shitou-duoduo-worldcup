@@ -282,7 +282,8 @@
         <div class="info-box">
             <p><span style="font-size: 1.3rem;">🎮</span> <strong>游戏规则：</strong>石头和多多各选 <span class="highlight">3 支</span> 自己认为能打进 <span class="highlight">16 强</span> 的队伍。</p>
             <p><span style="font-size: 1.3rem;">🔄</span> 小组赛期间可以无限次修改，点一下头像按钮就能选上或取消。</p>
-            <p><span style="font-size: 1.3rem;">📊</span> 下面的积分会跟随比赛结果更新（数据截至 2026 年 6 月 13 日）。</p>
+            <p><span style="font-size: 1.3rem;">📊</span> 下面的积分会跟随比赛结果更新（数据截至 2026 年 6 月 19 日）。</p>
+            <p><span style="font-size: 1.3rem;">🔖</span> <strong>小提示：</strong>选好队伍后，<span class="highlight">收藏这个网页地址</span>，下次更新比分后选择也不会丢！</p>
         </div>
 
         <div class="selection-summary">
@@ -434,7 +435,39 @@
         const STORAGE_KEY = 'worldcup2026_picks';
         const MAX_PICKS = 3;
 
+        function parseHashPicks() {
+            const hash = window.location.hash.replace(/^#/, '');
+            const params = new URLSearchParams(hash);
+            const picks = { shitou: [], duoduo: [] };
+            ['shitou', 'duoduo'].forEach(child => {
+                const value = params.get(child);
+                if (value) {
+                    picks[child] = value.split(',').filter(n => n);
+                }
+            });
+            return picks;
+        }
+
+        function updateHash(picks) {
+            const params = new URLSearchParams();
+            ['shitou', 'duoduo'].forEach(child => {
+                if (picks[child].length > 0) {
+                    params.set(child, picks[child].join(','));
+                }
+            });
+            const hash = params.toString();
+            if (hash) {
+                history.replaceState(null, null, '#' + hash);
+            } else {
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
+        }
+
         function getPicks() {
+            const hashPicks = parseHashPicks();
+            if (hashPicks.shitou.length > 0 || hashPicks.duoduo.length > 0) {
+                return hashPicks;
+            }
             try {
                 return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { shitou: [], duoduo: [] };
             } catch {
@@ -444,6 +477,7 @@
 
         function savePicks(picks) {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(picks));
+            updateHash(picks);
         }
 
         function togglePick(child, teamName) {
@@ -534,6 +568,14 @@
         }
 
         render();
-    </script>
+
+        // 如果本地有之前的选择但 URL 里没有，自动同步到 URL，方便收藏和分享
+        (function syncInitialHash() {
+            if (window.location.hash) return;
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+            if (saved && (saved.shitou.length > 0 || saved.duoduo.length > 0)) {
+                updateHash(saved);
+            }
+        })();
 </body>
 </html>
